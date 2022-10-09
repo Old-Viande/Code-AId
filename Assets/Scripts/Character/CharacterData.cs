@@ -7,6 +7,7 @@ public class CharacterData : MonoBehaviour
     public Character unit;
     public Transform hitPoint;
     public Transform carryPoint;
+    public Animator anim;
     public void Update()
     {
         if (unit.hp <= 0)
@@ -14,5 +15,8 @@ public class CharacterData : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
-
+    protected void Awake()
+    {
+        anim = GetComponentInChildren<Animator>();
+    }
 }

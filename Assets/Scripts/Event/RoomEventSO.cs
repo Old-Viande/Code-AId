@@ -49,7 +49,7 @@ public class RoomEventSO : ScriptableObject
             id += 1;
             RoomEvent.ID = id.ToString();
         }
-        RoomEvent.Name += String.Format($" {id}");
+        RoomEvent.Name += string.Format($" {id}");
         RoomEventList.Add(RoomEvent);
     }
 

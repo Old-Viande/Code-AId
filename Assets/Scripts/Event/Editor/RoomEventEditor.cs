@@ -14,6 +14,7 @@ public class RoomEventEditor : EditorWindow
 
     private Vector2 m_ScrollPosition;
     private ReorderableList m_DescriptionRL;
+    private ReorderableList m_ButtonEventRL;
 
     [MenuItem("Room Event/Editor")]
     static void OpenWindow()
@@ -31,7 +32,7 @@ public class RoomEventEditor : EditorWindow
         {
             m_RoomEventSO.hideFlags = HideFlags.NotEditable | HideFlags.DontSave;
 
-            RefreshDescription(0);
+            RefreshReorderableLists(0);
         }
         else
         {
@@ -49,13 +50,13 @@ public class RoomEventEditor : EditorWindow
         {
             m_RoomEventSO.AddNewRoomEvent();
             m_CurrentIndex = m_RoomEventSO.GetListCount() - 1;
-            RefreshDescription(m_CurrentIndex);
+            RefreshReorderableLists(m_CurrentIndex);
         }
         if (GUILayout.Button("É¾ ³ý", GUILayout.Width(100)))
         {
             m_RoomEventSO.RemoveRoomEvent(m_CurrentIndex);
             m_CurrentIndex = m_CurrentIndex == 0 ? 0 : (m_CurrentIndex - 1);
-            RefreshDescription(m_CurrentIndex);
+            RefreshReorderableLists(m_CurrentIndex);
         }
         if (GUILayout.Button("±£ ´æ", GUILayout.Width(100)))
         {
@@ -77,7 +78,7 @@ public class RoomEventEditor : EditorWindow
                 if (GUILayout.Button(m_RoomEventSO.GetRoomEvent(i).Name, style, GUILayout.Width(190)))
                 {
                     m_CurrentIndex = i;
-                    RefreshDescription(m_CurrentIndex);
+                    RefreshReorderableLists(m_CurrentIndex);
                 }
                 style.normal.textColor = originColor;
             }
@@ -212,6 +213,8 @@ public class RoomEventEditor : EditorWindow
                     }
                     EditorGUI.indentLevel--;
                 }
+
+                
             }
             EditorGUILayout.EndVertical();
         }
@@ -268,12 +271,13 @@ public class RoomEventEditor : EditorWindow
         EditorGUI.indentLevel--;
     }
 
-    private void RefreshDescription(int index)
+    private void RefreshReorderableLists(int index)
     {
         RoomEvent roomEvent = m_RoomEventSO.GetRoomEvent(index);
         if (roomEvent == null)
         {
             m_DescriptionRL = null;
+            m_ButtonEventRL = null;
         }
         else
         {
@@ -286,6 +290,17 @@ public class RoomEventEditor : EditorWindow
                 drawElementCallback = (rect, index, isActive, isFocused) =>
                 {
                     roomEvent.Description[index] = EditorGUI.TextArea(rect, roomEvent.Description[index]);
+                }
+            };
+            m_ButtonEventRL = new ReorderableList(roomEvent.ButtonEvent, typeof(UnityEngine.Events.UnityEvent), true, true, true, true)
+            {
+                drawHeaderCallback = (rect) =>
+                {
+                    EditorGUI.LabelField(rect, "Button Events");
+                },
+                drawElementCallback = (rect, index, isActive, isFocused) =>
+                {
+
                 }
             };
         }

@@ -56,10 +56,30 @@ public class TransformTweenBehaviour : PlayableBehaviour
     AnimationCurve m_HarmonicCurve = AnimationCurve.EaseInOut(0f, 0f, 1f, 1f);
 
     const float k_RightAngleInRads = Mathf.PI * 0.5f;
-    
 
-  
 
+    public override void OnBehaviourPlay(Playable playable, FrameData info)
+    {
+        //开始时确定射程，射速，算出duration时间（也就是说duration代表最大射程下射击所花时间），
+        //然后根据实际射击距离给出duration应该缩减的比例 最大射程：实际射程 = 最大时间：实际时间
+        //所以 实际Duration=（实际射程*MaxDuration）/最大射程；
+        //最大SkillManagerMono.Instance.tempSkill.
+        //实际GridManager.Instance.currentDistance
+        //最大时间clip。duration
+        //实际最大播放速度比=实际距离*最大时间/（最大距离*实际时间）
+        PlayableDirector pd = (PlayableDirector)playable.GetGraph().GetResolver();
+        float maxDuration = (float)playable.GetDuration();
+        float realDuration = (GridManager.Instance.currentDistance * maxDuration) / SkillManagerMono.Instance.tempSkill.attackRange;
+        pd.playableGraph.GetRootPlayable(0).SetSpeed(maxDuration /realDuration);
+
+    }
+    public override void OnBehaviourPause(Playable playable, FrameData info)
+    {
+        //PlayableDirector pd = (PlayableDirector)playable.GetGraph().GetResolver();
+        //pd.playableGraph.GetRootPlayable(0).SetSpeed(1);
+        //Debug.Log(1);
+
+    }
     public override void PrepareFrame (Playable playable, FrameData info)
     {
         if (startLocation)

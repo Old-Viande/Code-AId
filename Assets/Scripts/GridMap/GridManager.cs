@@ -39,6 +39,10 @@ public class GridManager : Singleton<GridManager>
     private SkillData tempSkill;
     public Vector3 skillHitPoint;
     DecalProjector tempRange;
+    /// <summary>
+    /// 当前技能的释放距离
+    /// </summary>
+    public float currentDistance;
     //private bool canClick =false;
     private void Start()
     {
@@ -112,12 +116,14 @@ public class GridManager : Singleton<GridManager>
                 //范围检测，首先找到当前行动单位和目标(已解决)
                 if ((checkHit.point - DataSave.Instance.currentObj.transform.position).magnitude > tempSkill.attackRange)//如果鼠标的距离大于技能的攻击距离
                 {
+                    currentDistance = tempSkill.attackRange;
                     skillHitPoint = (checkHit.point - DataSave.Instance.currentObj.transform.position).normalized * tempSkill.attackRange + DataSave.Instance.currentObj.transform.position;
                     LineRendererScript.Instance.EndPosSet(skillHitPoint);
                     tempRange.transform.position = (checkHit.point - DataSave.Instance.currentObj.transform.position).normalized * tempSkill.attackRange + DataSave.Instance.currentObj.transform.position + Vector3.up;
                 }
                 else
                 {
+                    currentDistance = (checkHit.point - DataSave.Instance.currentObj.transform.position).magnitude;
                     skillHitPoint = checkHit.point;
                     LineRendererScript.Instance.EndPosSet(checkHit.point);//结束点是射线碰撞点坐标
                     tempRange.transform.position = checkHit.point + Vector3.up * 0.5f;

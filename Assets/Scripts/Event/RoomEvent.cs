@@ -34,4 +34,8 @@ public class RoomEvent
     public EventValueChangeType EventEffectChangeValueChangeType;
     public float EventEffectChangeValue;
     #endregion // ÊÂ¼þÖ´ÐÐ
+
+    #region UI Buttons
+    public List<UnityEngine.Events.UnityEvent> ButtonEvent = new();
+    #endregion
 }

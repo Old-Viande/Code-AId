@@ -193,7 +193,7 @@ MonoBehaviour:
   m_Children: []
   m_Clips:
   - m_Version: 1
-    m_Start: 0
+    m_Start: 0.7833333333333333
     m_ClipIn: 0
     m_Asset: {fileID: 6936871517038350256}
     m_Duration: 1
@@ -606,11 +606,11 @@ MonoBehaviour:
     particle: {fileID: 0}
     trans: {fileID: 0}
   particle:
-    exposedName: 9b7bca9a-09b6-4963-904b-63f6896b744e
+    exposedName: b0910d33-7662-45c8-bba7-7fe0a8ae4589
     defaultValue: {fileID: 3456397643179304882, guid: b9087d719367ffa4c9702cf5701322c7,
       type: 3}
   trans:
-    exposedName: 1729c370-589b-4ec9-b1da-9d1315d885b9
+    exposedName: b2792209-145b-4677-b416-09523c39360a
     defaultValue: {fileID: 0}
 --- !u!114 &11400000
 MonoBehaviour:
@@ -809,6 +809,8 @@ MonoBehaviour:
     relayhight: 2
     startAim: 0
     endAim: 3
+    speed: 0
+    pd: {fileID: 0}
     startLocation: {fileID: 0}
     endLocation: {fileID: 0}
     tweenPosition: 1
@@ -841,7 +843,7 @@ MonoBehaviour:
     startingPosition: {x: 0, y: 0, z: 0}
     startingRotation: {x: 0, y: 0, z: 0, w: 1}
   startLocation:
-    exposedName: 233d0573-276b-480f-8bc8-17004e7ca4ec
+    exposedName: 3fa401f1-0e5c-4dcb-9c37-28037d6657c0
     defaultValue: {fileID: 0}
   endLocation:
     exposedName: 
@@ -885,6 +887,8 @@ MonoBehaviour:
     relayhight: 2
     startAim: 3
     endAim: 2
+    speed: 0
+    pd: {fileID: 0}
     startLocation: {fileID: 0}
     endLocation: {fileID: 0}
     tweenPosition: 1
@@ -917,7 +921,7 @@ MonoBehaviour:
     startingPosition: {x: 0, y: 0, z: 0}
     startingRotation: {x: 0, y: 0, z: 0, w: 1}
   startLocation:
-    exposedName: 3fb49d94-df05-4b2b-8119-9696e74844c6
+    exposedName: 2c2e1d6c-7af2-472f-ad08-c56535b77e03
     defaultValue: {fileID: 0}
   endLocation:
     exposedName: 

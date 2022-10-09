@@ -12,12 +12,7 @@ public class SkillManagerMono : Singleton<SkillManagerMono>
     public SkillData tempSkill;//当前要播放的skill
     public List<CharacterData> tempTargets;
 
-    //为了实现时间缩放，需要分成，可缩放track和跟进track，
-    //与其改动位置牵一发动全身，不如改播放速度，
-    //playableDirector.playableGraph.GetRootPlayable(0).SetSpeed(speed);
-    //  playableDirector.RebuildGraph(); 当未开始播放时调速度要调这句先，开播不用
-    //playableDirector.playableGraph.GetRootPlayable(0).SetSpeed(speed);
-    //速度变化的区间仅仅是transtween的track
+   
     
     protected override void Awake()
     {

@@ -25,6 +25,8 @@ public class TransformTweenBehaviour : PlayableBehaviour
     public float relayhight;
     public AimPosition startAim;
     public AimPosition endAim;
+    public float speed;
+    public PlayableDirector pd;
     //对start和end做填充即可，
     //如果是火球。就是挂给火球，然后从自己-》鼠标所指
     //如果是射击，就是挂给箭矢，然后从自己-》敌人
@@ -60,26 +62,29 @@ public class TransformTweenBehaviour : PlayableBehaviour
 
     public override void OnBehaviourPlay(Playable playable, FrameData info)
     {
+        //为了实现时间缩放，需要分成，可缩放track和跟进track，
+        //与其改动位置牵一发动全身，不如改播放速度，
+        //  playableDirector.RebuildGraph(); 当未开始播放时调速度要调这句先，开播不用
+        //playableDirector.playableGraph.GetRootPlayable(0).SetSpeed(speed);
+        //速度变化的区间仅仅是transtween的track
+
         //开始时确定射程，射速，算出duration时间（也就是说duration代表最大射程下射击所花时间），
         //然后根据实际射击距离给出duration应该缩减的比例 最大射程：实际射程 = 最大时间：实际时间
         //所以 实际Duration=（实际射程*MaxDuration）/最大射程；
         //最大SkillManagerMono.Instance.tempSkill.
         //实际GridManager.Instance.currentDistance
         //最大时间clip。duration
-        //实际最大播放速度比=实际距离*最大时间/（最大距离*实际时间）
-        PlayableDirector pd = (PlayableDirector)playable.GetGraph().GetResolver();
+        if (pd == null)
+        {
+            pd = (PlayableDirector)playable.GetGraph().GetResolver();
+        }
         float maxDuration = (float)playable.GetDuration();
         float realDuration = (GridManager.Instance.currentDistance * maxDuration) / SkillManagerMono.Instance.tempSkill.attackRange;
-        pd.playableGraph.GetRootPlayable(0).SetSpeed(maxDuration /realDuration);
+        speed = maxDuration / realDuration;
+        pd.playableGraph.GetRootPlayable(0).SetSpeed(speed);
 
     }
-    public override void OnBehaviourPause(Playable playable, FrameData info)
-    {
-        //PlayableDirector pd = (PlayableDirector)playable.GetGraph().GetResolver();
-        //pd.playableGraph.GetRootPlayable(0).SetSpeed(1);
-        //Debug.Log(1);
-
-    }
+   
     public override void PrepareFrame (Playable playable, FrameData info)
     {
         if (startLocation)
@@ -87,9 +92,23 @@ public class TransformTweenBehaviour : PlayableBehaviour
             startingPosition = startLocation.position;
             startingRotation = startLocation.rotation;
         }
-        
+        if (pd!=null)
+        {
+            if (pd.playableGraph.GetRootPlayable(0).GetSpeed()!=speed)
+            {
+                pd.playableGraph.GetRootPlayable(0).SetSpeed(speed);
+            }
+        }
     }
-
+    public override void OnBehaviourPause(Playable playable, FrameData info)
+    {
+        if (pd==null)
+        {
+            pd = (PlayableDirector)playable.GetGraph().GetResolver();
+        }
+  
+        pd.playableGraph.GetRootPlayable(0).SetSpeed(1);
+    }
     public float EvaluateCurrentCurve (float time)
     {
         if (tweenType == TweenType.Custom && !IsCustomCurveNormalised ())

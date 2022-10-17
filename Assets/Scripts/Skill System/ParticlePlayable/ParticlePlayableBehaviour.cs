@@ -14,7 +14,10 @@ public class ParticlePlayableBehaviour : PlayableBehaviour
     }
     public override void OnBehaviourPlay(Playable playable, FrameData info)
     {
-
+        if (particle == null)
+        {
+            return;
+        }
         particle = GameObject.Instantiate(particle).GetComponent<ParticleSystem>();
         particle.Play();
     }
@@ -24,11 +27,19 @@ public class ParticlePlayableBehaviour : PlayableBehaviour
         {
             return;
         }
+        if (particle==null)
+        {
+            return;
+        }
         particle.transform.position = trans.position;
         particle.transform.rotation = trans.rotation;
     }
     public override void OnGraphStop(Playable playable)
     {
+        if (particle==null)
+        {
+            return;
+        }
         particle.Stop();
     }
 }

@@ -11,7 +11,14 @@ public class RoomEventSOInspector : Editor
         EditorGUI.EndDisabledGroup();
         if (GUILayout.Button("Open Editor"))
         {
-            EditorApplication.ExecuteMenuItem("Room Event/Editor");
+            if (EditorWindow.HasOpenInstances<RoomEventEditor>())
+            {
+                EditorWindow.FocusWindowIfItsOpen<RoomEventEditor>();
+            }
+            else
+            {
+                EditorApplication.ExecuteMenuItem("Room Event/Editor");
+            }
         }
     }
 }

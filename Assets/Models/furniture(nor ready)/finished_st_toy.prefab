@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 454829378952530353}
   - component: {fileID: 4451643990007198012}
   - component: {fileID: 8315195723308765445}
+  - component: {fileID: -4243119608703141555}
   m_Layer: 0
   m_Name: finished_st_toy
   m_TagString: Untagged
@@ -83,3 +84,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &-4243119608703141555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7821490239380853682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0039e748250a50141bba0959b6e08a7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_FurnitureType: 0

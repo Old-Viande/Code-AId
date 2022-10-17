@@ -19,8 +19,16 @@ public class UpdataManager : Singleton<UpdataManager>
     /// UI面板的移动按钮已经被按下了
     /// </summary>
     public bool moveButtonPushed = false;
+    /// <summary>
+    /// 事件是否正在执行
+    /// </summary>
+    public bool eventHappen = false;
 
     public bool skillUseButton = false;
+    /// <summary>
+    /// 技能已经释放
+    /// </summary>
+    public bool skillRealess = false;
     //private static UpdataManager instance;
     //public static UpdataManager Instance
     //{

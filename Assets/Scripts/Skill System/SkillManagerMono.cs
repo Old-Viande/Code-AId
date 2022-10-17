@@ -12,12 +12,9 @@ public class SkillManagerMono : Singleton<SkillManagerMono>
     public SkillData tempSkill;//当前要播放的skill
     public List<CharacterData> tempTargets;
 
-   
-    
     protected override void Awake()
     {
         base.Awake();
-        
     }
     
     private void Start()
@@ -91,20 +88,22 @@ public class SkillManagerMono : Singleton<SkillManagerMono>
             else if (track.name == "Victim Animation")
             {
                 //群攻生track
-                for (int i = 0; i < targets.Count; i++)
-                {
-                    var trackTemp= CopyTrack(track, timeline);
-                    pd.SetGenericBinding(trackTemp, targets[i].GetComponentInChildren<Animator>());
-                }
+                //因为使用了暴力timeline，所以啥也不用做了
+                //for (int i = 0; i < targets.Count; i++)
+                //{
+                //    var trackTemp= CopyTrack(track, timeline);
+                //    pd.SetGenericBinding(trackTemp, targets[i].GetComponentInChildren<Animator>());
+                //}
             }
             else if (track.name == "Victim Audio")
             {
-                //pd.SetGenericBinding(track, currentObj.GetComponent<AudioSource>());
-                for (int i = 0; i < targets.Count; i++)
-                {
-                    var trackTemp = CopyTrack(track, timeline);
-                    pd.SetGenericBinding(trackTemp, targets[i].GetComponent<AudioSource>());
-                }
+                //因为使用了暴力timeline，所以啥也不用做了
+                ////pd.SetGenericBinding(track, currentObj.GetComponent<AudioSource>());
+                //for (int i = 0; i < targets.Count; i++)
+                //{
+                //    var trackTemp = CopyTrack(track, timeline);
+                //    pd.SetGenericBinding(trackTemp, targets[i].GetComponent<AudioSource>());
+                //}
             }
             else if (track.name == "DamageParticle")
             {
@@ -207,17 +206,22 @@ public class SkillManagerMono : Singleton<SkillManagerMono>
                     pd.SetReferenceValue(myclip.trans.exposedName, (Transform)pd.GetGenericBinding(track));//
                 }
             }
-            else if (track.name == "Victim Animation")
+            else if (track.name.Contains("currentParticle"))
             {
-                if (targets.Count>0)
-                {
-                    pd.SetGenericBinding(track, targets[0].GetComponentInChildren<Animator>());
-                }
+                pd.SetGenericBinding(track, DataSave.Instance.currentObj.GetComponent<CharacterData>().carryPoint.transform);
+
             }
-            else if (track.name == "Victim Audio")
-            {
-                pd.SetGenericBinding(track, currentObj.GetComponent<AudioSource>());
-            }
+            //else if (track.name == "Victim Animation")
+            //{
+            //    if (targets.Count>0)
+            //    {
+            //        pd.SetGenericBinding(track, targets[0].GetComponentInChildren<Animator>());
+            //    }
+            //}
+            //else if (track.name == "Victim Audio")
+            //{
+            //    pd.SetGenericBinding(track, currentObj.GetComponent<AudioSource>());
+            //}
             else if (track.name == "DamageParticle")
             {
                 //pd.SetGenericBinding(track, currentObj.GetComponent<AudioSource>());
@@ -409,7 +413,14 @@ public class SkillManagerMono : Singleton<SkillManagerMono>
                 changeTrans = DataSave.Instance.currentObj.transform;
                 break;
             case TransformTweenBehaviour.AimPosition.target:
-                changeTrans = SkillManagerMono.Instance.tempTargets[0].transform;
+                if (SkillManagerMono.Instance.tempTargets.Count<=0)
+                {
+                    changeTrans = GameObject.Instantiate(new GameObject("mouseClikPosition"), GridManager.Instance.skillHitPoint, Quaternion.Euler((GridManager.Instance.skillHitPoint - DataSave.Instance.currentObj.transform.position).normalized)).transform;
+                }
+                else
+                {
+                    changeTrans = SkillManagerMono.Instance.tempTargets[0].transform;
+                }
                 break;
             case TransformTweenBehaviour.AimPosition.mouseClickPosition:
                 changeTrans = GameObject.Instantiate(new GameObject("mouseClikPosition"), GridManager.Instance.skillHitPoint, Quaternion.Euler((GridManager.Instance.skillHitPoint-DataSave.Instance.currentObj.transform.position).normalized)).transform;
@@ -419,13 +430,27 @@ public class SkillManagerMono : Singleton<SkillManagerMono>
                 {
                     changeTrans = GameObject.Instantiate(new GameObject("relayPoint"),
                       (DataSave.Instance.currentObj.transform.position + GridManager.Instance.skillHitPoint) / 2 + Vector3.up * relayhight
+                      *(GridManager.Instance.currentDistance/SkillManagerMono.Instance.tempSkill.attackRange)
                       , DataSave.Instance.currentObj.transform.rotation).transform;
                 }
                 else if (SkillManagerMono.Instance.tempSkill.currentSkillChoseType == SkillData.skillChoseType.single)
                 {
-                    changeTrans = GameObject.Instantiate(new GameObject("relayPoint"),
-                        (DataSave.Instance.currentObj.transform.position + SkillManagerMono.Instance.tempTargets[0].transform.position) / 2 + Vector3.up * relayhight
-                        , DataSave.Instance.currentObj.transform.rotation).transform;
+                    if (SkillManagerMono.Instance.tempTargets.Count<=0)
+                    {
+
+                        changeTrans = GameObject.Instantiate(new GameObject("relayPoint"),
+                          (DataSave.Instance.currentObj.transform.position + GridManager.Instance.skillHitPoint) / 2 + Vector3.up * relayhight
+                          * (GridManager.Instance.currentDistance / SkillManagerMono.Instance.tempSkill.attackRange)
+                          , DataSave.Instance.currentObj.transform.rotation).transform;
+                    }
+                    else
+                    {
+                        changeTrans = GameObject.Instantiate(new GameObject("relayPoint"),
+                       (DataSave.Instance.currentObj.transform.position + SkillManagerMono.Instance.tempTargets[0].transform.position) / 2 + Vector3.up * relayhight
+                       * (GridManager.Instance.currentDistance / SkillManagerMono.Instance.tempSkill.attackRange)
+                       , DataSave.Instance.currentObj.transform.rotation).transform;
+                    }
+                    
                 }
                 break;
             default:

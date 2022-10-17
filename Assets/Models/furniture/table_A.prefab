@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 593501969557950479}
   - component: {fileID: 7379892042256130240}
   - component: {fileID: 3861683126805524282}
-  - component: {fileID: 7854070572397609359}
+  - component: {fileID: -6367661759429991142}
   m_Layer: 0
   m_Name: table_A
   m_TagString: Untagged
@@ -104,7 +104,7 @@ MonoBehaviour:
   - {fileID: 3362226243797145688, guid: 16e9e6f380468174f84c89adb97f5ce2, type: 3}
   - {fileID: 7821490239380853682, guid: c679b2643b193b74c9ebc052b6d21808, type: 3}
   - {fileID: 5943949883345313602, guid: c62c67fe059edb243ad2cca3f12449b1, type: 3}
---- !u!114 &7854070572397609359
+--- !u!114 &-6367661759429991142
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

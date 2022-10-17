@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2735251042953552303}
   - component: {fileID: 3908667685075476914}
   - component: {fileID: 3051749713760191885}
+  - component: {fileID: -1132124636754333429}
   m_Layer: 0
   m_Name: finished_st_door_out
   m_TagString: Untagged
@@ -84,6 +85,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &-1132124636754333429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6943060637044125978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0039e748250a50141bba0959b6e08a7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_FurnitureType: 0
 --- !u!1001 &1552013653730423830
 PrefabInstance:
   m_ObjectHideFlags: 0

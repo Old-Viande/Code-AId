@@ -13,8 +13,10 @@ MonoBehaviour:
   m_Name: AllSkill
   m_EditorClassIdentifier: 
   datas:
-  - skillName: Attack
+  - locked: 0
+    skillName: Attack
     attackRange: 1.5
+    playSpeed: 0
     skillLeve: 0
     orginAttack: 5
     skillEffectRange: 0
@@ -28,8 +30,10 @@ MonoBehaviour:
     maxcoldDownTime: 0
     countDown: 0
     maxcountDown: 0
-  - skillName: fireball
+  - locked: 0
+    skillName: fireball
     attackRange: 6
+    playSpeed: 0
     skillLeve: 0
     orginAttack: 4
     skillEffectRange: 3
@@ -43,18 +47,20 @@ MonoBehaviour:
     maxcoldDownTime: 0
     countDown: 5
     maxcountDown: 5
-  - skillName: knife throwing
+  - locked: 0
+    skillName: Smoke
     attackRange: 10
+    playSpeed: 0
     skillLeve: 0
-    orginAttack: 5
-    skillEffectRange: 0
-    timelineAsset: {fileID: 0}
+    orginAttack: 10
+    skillEffectRange: 1
+    timelineAsset: {fileID: 11400000, guid: 5ed86ba75fb7baf4c88055be0f03623b, type: 2}
     currentSkillType: 1
     currentSkillProperty: 1
     currentSkillChoseType: 1
     currentSkillShape: 0
     maxUnitChose: 0
     coldDownTime: 0
-    maxcoldDownTime: 3
-    countDown: 0
-    maxcountDown: 0
+    maxcoldDownTime: 0
+    countDown: 5
+    maxcountDown: 5

@@ -348,6 +348,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bloodbar: {fileID: 0}
+  bloodFloor: {fileID: 0}
+  FloorSpeed: 1
 --- !u!1 &2830637555970003609
 GameObject:
   m_ObjectHideFlags: 0
@@ -792,6 +794,11 @@ MonoBehaviour:
     Item: {fileID: 0}
     currentState: 0
     skillSave: []
+    buffSave: []
+  hitPoint: {fileID: 0}
+  carryPoint: {fileID: 0}
+  anim: {fileID: 0}
+  audioSour: {fileID: 0}
   enemy:
     name: 
     UID: 
@@ -808,6 +815,7 @@ MonoBehaviour:
     Item: {fileID: 0}
     currentState: 0
     skillSave: []
+    buffSave: []
     Description: 
   heardMark: {fileID: 0}
 --- !u!65 &2978500709511468737
@@ -1052,7 +1060,7 @@ Animator:
   m_GameObject: {fileID: 7573642405634868048}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 7fd05fc6ca05e7448a14d8647bf218a0, type: 3}
-  m_Controller: {fileID: 9100000, guid: d65e2c06dc840d54ca80292cd866d11d, type: 2}
+  m_Controller: {fileID: 9100000, guid: 91d3bab001853d44b8f219bb3177554d, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

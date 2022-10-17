@@ -66,10 +66,15 @@ public class RuningState : IState
     }
     public void OnUpdata()
     {
+        if (UpdataManager.Instance.eventHappen)
+            return;
 
         if (manager.characters.Count>0)
         {//如果不为空
             DataSave.Instance.currentObj = manager.characters[index].gameObject;//当前物体等于回合顺序第一个单位
+            //这个位置留给buff判断
+            manager.characters[index].buffManager.OnRoundStart(manager.characters[index]);
+
             if (manager.characters[index].unit is Player)//检测是否这个单位是可控制单位
             {
                 //这里要判断玩家的选择，并且传相应的参数到对应的状态

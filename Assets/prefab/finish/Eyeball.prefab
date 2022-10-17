@@ -665,7 +665,7 @@ Animator:
   m_GameObject: {fileID: 3570925255218533902}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 58eca0dbb5b8a4d4a82a50127484e4ce, type: 3}
-  m_Controller: {fileID: 9100000, guid: 995a620c01e474743bb144e96cccaf08, type: 2}
+  m_Controller: {fileID: 9100000, guid: 4494045cbe15a244fb457743ede0c1d2, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -917,8 +917,11 @@ MonoBehaviour:
     Item: {fileID: 0}
     currentState: 0
     skillSave: []
+    buffSave: []
   hitPoint: {fileID: 3945991601848856265}
   carryPoint: {fileID: 4211985912968267499}
+  anim: {fileID: 0}
+  audioSour: {fileID: 0}
   enemy:
     name: 
     UID: 
@@ -935,6 +938,7 @@ MonoBehaviour:
     Item: {fileID: 0}
     currentState: 0
     skillSave: []
+    buffSave: []
     Description: 
   heardMark: {fileID: 0}
 --- !u!65 &1976804515294288209

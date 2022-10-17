@@ -14,7 +14,7 @@ public class IdelState : IState
     public void OnEnter()
     {
         SkillManager.Instance.Init();
-        if (DataSave.Instance.currentObj.GetComponent<PlayerData>().unit.actionPoint > 0)//�ж�ֵ����ʣ��
+        if (DataSave.Instance.currentObj.GetComponent<PlayerData>().unit.actionPoint > 0)//行动点大于等于0就结束回合
         {
 
         }
@@ -27,48 +27,6 @@ public class IdelState : IState
     {        
         Ray ray = manager.mainCamera.ScreenPointToRay(Input.mousePosition);
 
-        //if (Input.GetMouseButtonDown(0))
-        //{
-        //    RaycastHit hit;
-        //    if (Physics.Raycast(ray, out hit, Mathf.Infinity, GridManager.Instance.layerMask))
-        //    {
-        //        if (hit.collider.tag == "enemy")
-        //        {
-        //            DataSave.Instance.targetObj = hit.collider.gameObject;
-        //            //if (DataSave.Instance.currentObj.GetComponent<PlayerData>().CheckTargetInAttackRange(DataSave.Instance.targetObj, out canMove))
-        //            //{
-        //            //    DataSave.Instance.currentObj.GetComponent<PlayerData>().unit.currentState = Character.State.Attack;
-        //            //    if (canMove)
-        //            //    {
-        //            //        manager.TranState(StateType.Move);
-        //            //    }
-        //            //    else
-        //            //    {
-        //            //        manager.TranState(StateType.Attack);
-        //            //    }
-
-        //            //}
-        //            if (manager.CheckTargetInAttackRange(DataSave.Instance.currentObj, DataSave.Instance.targetObj, manager.characters[0].unit.attackRange))//判断是否在攻击范围内
-        //            {
-        //                manager.TranState(StateType.Attack);
-        //            }
-        //            else
-        //            {
-        //                manager.TranState(StateType.Move);
-        //            }
-        //        }
-        //        else if (hit.collider.tag == "floor" || hit.collider.tag == "door")
-        //        {
-        //            DataSave.Instance.targetObj = hit.collider.gameObject;
-        //            // if (DataSave.Instance.currentObj.GetComponent<PlayerData>().CheckMove(DataSave.Instance.targetObj, out canMove))
-        //            // {
-        //            DataSave.Instance.currentObj.GetComponent<PlayerData>().unit.currentState = Character.State.Move;
-        //            manager.TranState(StateType.Move);
-
-        //            // }
-        //        }
-        //    }
-        //}
         if (UpdataManager.Instance.moveButtonPushed)//点击移动按钮后才可以开始移动
         {
              LineRendererScript.Instance.StartPosSet();//移动前先显示线指示器
@@ -173,6 +131,7 @@ public class SkillState : IState
     }
     public void OnExit() 
     {
+        DataSave.Instance.currentObj.GetComponent<PlayerData>().unit.actionPoint--;
         UpdataManager.Instance.skillUseButton = false;//退出技能时，将技能使用状态切换为关闭
         UIManager.Instance.PopPanel();//UI层关闭目前的UI
     }

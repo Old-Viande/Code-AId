@@ -4,7 +4,6 @@ using UnityEngine.UI;
 
 public class SkillChoosePanel : BasePanel
 {
-	private CanvasGroup canvasGroup;
 	public Transform skilllistParent;
 	public Button exitBtn;
 	private void Start()
@@ -42,24 +41,17 @@ public class SkillChoosePanel : BasePanel
 			});
 		}
     }
+	public override void OnEnter()
+    {
+		base.OnEnter();
 
-    public override void OnEnter()
-	{
-		if (canvasGroup == null)
-		{
-			canvasGroup = GetComponent<CanvasGroup>();
-		}
-
-		canvasGroup.alpha = 1;
-		canvasGroup.interactable = true;
-		canvasGroup.blocksRaycasts = true;
+		SaveSkillIntoUI();
 	}
 
 	public override void OnExit()
 	{
-		canvasGroup.alpha = 0;
-		canvasGroup.interactable = false;
-		canvasGroup.blocksRaycasts = false;
+		base.OnExit();
+
 		//清理技能指示
 		UpdataManager.Instance.skillMarkOpen = false;
 		UpdataManager.Instance.skillLineOpen = false;
@@ -67,19 +59,10 @@ public class SkillChoosePanel : BasePanel
 
 	public override void OnPause()
 	{
-		canvasGroup.interactable = false;
-		canvasGroup.blocksRaycasts = false;
-		this.gameObject.SetActive(false);
+		base.OnPause();
+
 		//清理技能指示
 		UpdataManager.Instance.skillMarkOpen = false;
 		UpdataManager.Instance.skillLineOpen = false;
-	}
-
-	public override void OnResume()
-	{
-		this.gameObject.SetActive(true);
-
-		canvasGroup.interactable = true;
-		canvasGroup.blocksRaycasts = true;
 	}
 }

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Playables;
 
@@ -28,7 +29,7 @@ public partial class SkillManager
     }
     public void Init()
     {
-        AddSkill("fireball");//暂时增加的技能
+        //AddSkill("fireball");//暂时增加的技能
     }
     #region//判定是否能够使用
     /// <summary>
@@ -123,22 +124,30 @@ public partial class SkillManager
     #endregion
     public void RemoveSkill(string skillname)
     {
-        bool canAdd = true;
+        bool canRemove = false;
         GridManager.Instance.characterData.playerSave.TryGetValue(DataSave.Instance.currentObj.name, out Character player);//读出数据中的指定单位
         //技能系统还要有一个从allskill根据名字分配技能给characterSo的api.
         foreach (var skilldata in player.skillSave)
         {
             if (skilldata.skillName == skillname)
             {
-                canAdd = false;
+                canRemove = true;
                 break;
             }
         }
-        if (canAdd)
+        if (canRemove)
         {
             allSkill.datasSave.TryGetValue(skillname, out SkillData skill);//根据名字读到技能
-            DataSave.Instance.currentObj.GetComponent<CharacterData>().unit.skillSave.Remove(skill);//把技能存入当前行动单位的技能表中
-            player.skillSave.Remove(skill);
+            for (int i = 0; i < DataSave.Instance.currentObj.GetComponent<CharacterData>().unit.skillSave.Count; i++)
+            {
+                if (DataSave.Instance.currentObj.GetComponent<CharacterData>().unit.skillSave[i].skillName == skillname)
+                    DataSave.Instance.currentObj.GetComponent<CharacterData>().unit.skillSave.RemoveAt(i);
+            }
+            for (int i = 0; i < player.skillSave.Count; i++)
+            {
+                if (player.skillSave[i].skillName == skillname)
+                    player.skillSave.RemoveAt(i);
+            }
         }
     }
     //开始调用
@@ -171,6 +180,16 @@ public partial class SkillManager
         UpdataManager.Instance.skillUseButton = true;
     }
     
+    public string[] GetAllSkillName()
+    {
+        return allSkill.datasSave.Keys.ToArray();
+    }
+
+    public SkillData GetSkillFromName(string skillName)
+    {
+        allSkill.datasSave.TryGetValue(skillName, out SkillData result);
+        return result;
+    }
     
     //显示技能射程，鼠标放出屏幕射线，
     //单体技能射线碰到人物，判定成功后，就 头上显示标记，

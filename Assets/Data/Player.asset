@@ -18,6 +18,7 @@ MonoBehaviour:
     hp: 20
     maxHp: 20
     speed: 5
+    speedModifier: 0
     attack: 0
     defense: 0
     actionPoint: 4
@@ -25,11 +26,13 @@ MonoBehaviour:
     isPlayer: 0
     attackRange: 1
     moveSpeed: 5
-    Item: {fileID: 5949666922849394962, guid: b306f2cd517a10f4ab931343dc413220, type: 3}
+    Item: {fileID: 1203767411271284467, guid: 056b021000e96234a9edb0aec3e4564c, type: 3}
     currentState: 0
     skillSave:
-    - skillName: Attack
+    - locked: 0
+      skillName: Attack
       attackRange: 1.5
+      playSpeed: 0
       skillLeve: 0
       orginAttack: 5
       skillEffectRange: 0
@@ -43,15 +46,17 @@ MonoBehaviour:
       maxcoldDownTime: 0
       countDown: 0
       maxcountDown: 0
-    - skillName: fireball
-      attackRange: 6
+    - locked: 0
+      skillName: Smoke
+      attackRange: 10
+      playSpeed: 0
       skillLeve: 0
-      orginAttack: 4
-      skillEffectRange: 3
-      timelineAsset: {fileID: 11400000, guid: 3b1dedeeba19bc14090e7e5243c35f8e, type: 2}
+      orginAttack: 10
+      skillEffectRange: 1
+      timelineAsset: {fileID: 11400000, guid: 5ed86ba75fb7baf4c88055be0f03623b, type: 2}
       currentSkillType: 1
       currentSkillProperty: 1
-      currentSkillChoseType: 0
+      currentSkillChoseType: 1
       currentSkillShape: 0
       maxUnitChose: 0
       coldDownTime: 0
@@ -59,3 +64,4 @@ MonoBehaviour:
       countDown: 5
       maxcountDown: 5
     mask: {fileID: 0}
+    luck: 0

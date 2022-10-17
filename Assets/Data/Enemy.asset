@@ -18,6 +18,7 @@ MonoBehaviour:
     hp: 5
     maxHp: 5
     speed: 1
+    speedModifier: 0
     attack: 2
     defense: 1
     actionPoint: 1
@@ -25,7 +26,7 @@ MonoBehaviour:
     isPlayer: 0
     attackRange: 1
     moveSpeed: 5
-    Item: {fileID: 3333466205719668340, guid: 541e538371e0a744f8d0bfb11f62ae03, type: 3}
+    Item: {fileID: 7726280983640837676, guid: 614a7ac13d19a104e8ecf427a32551f4, type: 3}
     currentState: 0
     skillSave: []
     Description: for the test
@@ -34,6 +35,7 @@ MonoBehaviour:
     hp: 20
     maxHp: 20
     speed: 3
+    speedModifier: 0
     attack: 5
     defense: 5
     actionPoint: 3
@@ -46,34 +48,36 @@ MonoBehaviour:
     skillSave: []
     Description: for the test
   - name: Death
-    UID: e1
-    hp: 10
-    maxHp: 10
+    UID: e2
+    hp: 20
+    maxHp: 20
     speed: 5
+    speedModifier: 0
     attack: 10
     defense: 5
-    actionPoint: 2
-    maxActionPoint: 2
+    actionPoint: 1
+    maxActionPoint: 1
     isPlayer: 0
-    attackRange: 2
+    attackRange: 5
     moveSpeed: 15
-    Item: {fileID: 6414115672605557180, guid: 74cfcddbe0fc326429f12c91e2590d06, type: 3}
+    Item: {fileID: 5082316252554242091, guid: 4d15f48111895c04791fdf0f7d74f263, type: 3}
     currentState: 0
     skillSave: []
     Description: for the test
   - name: Z-Man
-    UID: e1
-    hp: 10
-    maxHp: 10
+    UID: e3
+    hp: 15
+    maxHp: 15
     speed: 5
+    speedModifier: 0
     attack: 10
     defense: 5
-    actionPoint: 2
-    maxActionPoint: 2
+    actionPoint: 1
+    maxActionPoint: 1
     isPlayer: 0
     attackRange: 2
     moveSpeed: 15
-    Item: {fileID: 6414115672605557180, guid: 74cfcddbe0fc326429f12c91e2590d06, type: 3}
+    Item: {fileID: 3333466205719668340, guid: 541e538371e0a744f8d0bfb11f62ae03, type: 3}
     currentState: 0
     skillSave: []
     Description: for the test

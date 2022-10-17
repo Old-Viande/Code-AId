@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6260518904141678318}
   - component: {fileID: 7115085243469474401}
   - component: {fileID: 6382315876123183865}
+  - component: {fileID: 8321863491654585775}
   m_Layer: 0
   m_Name: finished_st_pc
   m_TagString: Untagged
@@ -83,3 +84,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &8321863491654585775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 834854404628834798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0039e748250a50141bba0959b6e08a7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_FurnitureType: 0

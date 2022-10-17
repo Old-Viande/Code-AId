@@ -1000,6 +1000,11 @@ MonoBehaviour:
     Item: {fileID: 0}
     currentState: 0
     skillSave: []
+    buffSave: []
+  hitPoint: {fileID: 0}
+  carryPoint: {fileID: 0}
+  anim: {fileID: 0}
+  audioSour: {fileID: 0}
   player:
     name: 
     UID: 
@@ -1016,7 +1021,9 @@ MonoBehaviour:
     Item: {fileID: 0}
     currentState: 0
     skillSave: []
+    buffSave: []
     mask: {fileID: 0}
+    luck: 0
 --- !u!82 &-4177258780447472137
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1229,6 +1236,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bloodbar: {fileID: 2983579363745518528}
+  bloodFloor: {fileID: 0}
+  FloorSpeed: 1
 --- !u!1 &3241562918607674739
 GameObject:
   m_ObjectHideFlags: 0
@@ -2161,7 +2170,7 @@ Animator:
   m_GameObject: {fileID: 8437484405721814185}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 7d9dde0d8a018e845acebfb1ed612a2d, type: 3}
-  m_Controller: {fileID: 9100000, guid: 1b9fdafe9f6b68447b71b20abad7a627, type: 2}
+  m_Controller: {fileID: 9100000, guid: 5d36b2665341784409deae4d06ba6e64, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

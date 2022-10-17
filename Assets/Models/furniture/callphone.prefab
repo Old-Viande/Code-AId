@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2246335751928363997}
   - component: {fileID: 2114133552445084666}
   - component: {fileID: 1110571786905746005}
+  - component: {fileID: -4097376180732098617}
   m_Layer: 0
   m_Name: callphone
   m_TagString: Untagged
@@ -83,3 +84,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &-4097376180732098617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7792603128809653090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0039e748250a50141bba0959b6e08a7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_FurnitureType: 0

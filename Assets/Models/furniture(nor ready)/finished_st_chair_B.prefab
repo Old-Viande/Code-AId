@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5715746929784587392}
   - component: {fileID: 692948020912939124}
   - component: {fileID: 4289387285343070603}
+  - component: {fileID: 6103034620204061548}
   m_Layer: 0
   m_Name: finished_st_chair_B
   m_TagString: Untagged
@@ -83,3 +84,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &6103034620204061548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1271351811232812188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0039e748250a50141bba0959b6e08a7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_FurnitureType: 0

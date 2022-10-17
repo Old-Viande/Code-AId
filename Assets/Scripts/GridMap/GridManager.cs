@@ -39,10 +39,14 @@ public class GridManager : Singleton<GridManager>
     private SkillData tempSkill;
     public Vector3 skillHitPoint;
     DecalProjector tempRange;
+
     /// <summary>
     /// 当前技能的释放距离
     /// </summary>
     public float currentDistance;
+
+    public Vector2Int newRoomPos;
+
     //private bool canClick =false;
     private void Start()
     {
@@ -117,6 +121,7 @@ public class GridManager : Singleton<GridManager>
                 if ((checkHit.point - DataSave.Instance.currentObj.transform.position).magnitude > tempSkill.attackRange)//如果鼠标的距离大于技能的攻击距离
                 {
                     currentDistance = tempSkill.attackRange;
+
                     skillHitPoint = (checkHit.point - DataSave.Instance.currentObj.transform.position).normalized * tempSkill.attackRange + DataSave.Instance.currentObj.transform.position;
                     LineRendererScript.Instance.EndPosSet(skillHitPoint);
                     tempRange.transform.position = (checkHit.point - DataSave.Instance.currentObj.transform.position).normalized * tempSkill.attackRange + DataSave.Instance.currentObj.transform.position + Vector3.up;
@@ -180,7 +185,7 @@ public class GridManager : Singleton<GridManager>
                             }
                         }
                     }
-                    else if (tempSkill.currentSkillType == SkillData.skillType.hill || tempSkill.currentSkillType == SkillData.skillType.enhanch)
+                    else if (tempSkill.currentSkillType == SkillData.skillType.heal || tempSkill.currentSkillType == SkillData.skillType.enhanch)
                     {
                         //治愈和强化类型的技能选择对象必须为友方
                         if (tempSkill.currentSkillChoseType == SkillData.skillChoseType.multi)
@@ -209,7 +214,7 @@ public class GridManager : Singleton<GridManager>
                     foreach (var item in skilleffect)
                     {
                         Debug.Log("skill effect " + " " + item.name);
-                        item.GetComponent<EnemyData>().heardMark.GetComponent<SpriteRenderer>().enabled = true;//在组件里渲染箭头                
+                        //item.GetComponent<EnemyData>().heardMark.GetComponent<SpriteRenderer>().enabled = true;//在组件里渲染箭头                
                     }
                     UpdataManager.Instance.skillLineOpen = false;
                     UpdataManager.Instance.skillMarkOpen = false;
@@ -233,6 +238,35 @@ public class GridManager : Singleton<GridManager>
     {
         skillReadyToUse = false;
     }
+
+    private void CheckEvent(GameObject roomGO)
+    {
+        var register = roomGO.GetComponent<EventRegister>();
+        var roomEvent = RoomEventManager.Instance.GetTriggeredRoomEvent(register);
+        if (roomEvent == null)
+            return;
+
+        if (RoomEventManager.Instance.CheckRoomEventCondition(roomEvent))
+        {
+            EventPanel eventPanel = UIManager.Instance.PushPanel(UIPanelType.EventPanel) as EventPanel;
+            eventPanel.UpdateRoomEvent(roomEvent);
+            RoomEventManager.Instance.ExecuteRoomEventEffect(roomEvent);
+        }
+    }
+
+    private void CreateRoom(int x, int z)
+    {
+        if (roomGridmap.GetValue(x, z) != null)
+            return;
+
+        GameObject roomGO = Instantiate(room, roomGridmap.GetGridCenter(x, z), Quaternion.identity);
+        roomGridmap.SetValue(x, z, roomGO);//要将生成的物体存入网格内
+        RoomToStep(x, z);
+        RoomBuild.Instance.CreateGrid(roomGridmap.GetWorldPosition(x, z));
+        newRoomPos = new Vector2Int(x, z);
+        CheckEvent(roomGO);
+    }
+
     private void FixedUpdate()
     {
         foreach (var item in DataSave.Instance.currentPlayers)
@@ -241,51 +275,26 @@ public class GridManager : Singleton<GridManager>
             CheckDoor(x, z);
             foreach (var a in doorSave)
             {
-                int tx, tz;//存储当前角色的站位
-                stepGrid.GetGridXZ(item.Value.gameObject.transform.position, out tx, out tz);
+                stepGrid.GetGridXZ(item.Value.gameObject.transform.position, out int tx, out int tz);
                 if (tx == a.Value.x && tz == a.Value.y)
                 {
-
                     switch (a.Key)//检测踩入的门格是什么方向的
                     {
                         case "forward":
-                            if (roomGridmap.GetValue(x, z + 1) == null)
-                            {
-                                roomGridmap.SetValue(x, z + 1, Instantiate(room, roomGridmap.GetGridCenter(x, z + 1), Quaternion.identity));//要将生成的物体存入网格内
-                                RoomToStep(x, z + 1);
-                                RoomBuild.Instance.CreateGrid(roomGridmap.GetWorldPosition(x, z + 1));
-                            }
+                            CreateRoom(x, z + 1);
                             break;
                         case "left":
-                            if (roomGridmap.GetValue(x - 1, z) == null)
-                            {
-                                roomGridmap.SetValue(x - 1, z, Instantiate(room, roomGridmap.GetGridCenter(x - 1, z), Quaternion.identity));
-                                RoomToStep(x - 1, z);
-                                RoomBuild.Instance.CreateGrid(roomGridmap.GetWorldPosition(x - 1, z));
-                            }
+                            CreateRoom(x - 1, z);
                             break;
                         case "right":
-                            if (roomGridmap.GetValue(x + 1, z) == null)
-                            {
-                                roomGridmap.SetValue(x + 1, z, Instantiate(room, roomGridmap.GetGridCenter(x + 1, z), Quaternion.identity));
-                                RoomToStep(x + 1, z);
-                                RoomBuild.Instance.CreateGrid(roomGridmap.GetWorldPosition(x + 1, z));
-                            }
+                            CreateRoom(x + 1, z);
                             break;
                         case "back":
-                            if (roomGridmap.GetValue(x, z - 1) == null)
-                            {
-                                //roomGrid.SetValue(x, z - 1, Instantiate(room, roomGrid.GetGridCenter(x, z - 1) + Vector3.down * 0.55f, Quaternion.identity));
-                                roomGridmap.SetValue(x, z - 1, Instantiate(room, roomGridmap.GetGridCenter(x, z - 1), Quaternion.identity));
-                                RoomToStep(x, z - 1);
-                                RoomBuild.Instance.CreateGrid(roomGridmap.GetWorldPosition(x, z - 1));
-                            }
+                            CreateRoom(x, z - 1);
                             break;
                     }
                 }
             }
-
-
         }
     }
     public void RoomToStep(int gx, int gz)
@@ -305,6 +314,14 @@ public class GridManager : Singleton<GridManager>
             }
         }
     }
+
+    public void GetRoomBound(int x, int z, out int minX, out int minZ, out int maxX, out int maxZ)
+    {
+        roomGridmap.GetGridRangePoints(x, z, out int _maxX, out int _minX, out int _maxZ, out int _minZ);
+        GridTranslateToSmall(_minX, _minZ, out minX, out minZ);
+        GridTranslateToSmall(_maxX, _maxZ, out maxX, out maxZ);
+    }
+
     public void CheckDoor(int x, int z)//现在只有一种房间类型，后续根据房间类型的增多需要进行修改
     {
         doorSave.Clear();

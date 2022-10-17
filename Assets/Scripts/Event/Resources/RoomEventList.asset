@@ -1,0 +1,506 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 52
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aba5707c08991b8439a93c5d74c0a5a4, type: 3}
+  m_Name: RoomEventList
+  m_EditorClassIdentifier: 
+  RoomEventList:
+  - ID: 0
+    Name: Surprised!
+    Description:
+    - You see something
+    - but you can't be sure what it is
+    - so who knows?
+    - Maybe you're looking away.
+    - '(You have become more alert '
+    - so your maximum action point has gone up by 1)
+    RoomEventTriggerFoldout: 1
+    RoomEventTrigger:
+      RoomEventEffectTrigger: 0
+      RoomEventEffectTriggerArg: 0
+      EventTriggerPre: 0
+      EventTriggerPreArg1: 0
+      EventTriggerPreArg2: 0
+      EventTriggerPreArg3: 0
+      EventTriggerPreArg4: 0
+    EventEffectFoldout: 1
+    RoomEventEffect:
+      HasEventEffect: 1
+      EventTarget: 1
+      EventTargetFilter: 0
+      EventTargetCheckValueType: 0
+      EventTargetCheckValueFilter: 0
+      EventTargetFilterArg1: 0
+      EventTargetFilterArg2: 0
+      EventTargetFilterArg3: 0
+      EventEffectWithTarget: 0
+      EventEffectWithoutTarget: 2
+      EventEffectChangeValueType: 6
+      EventEffectChangeValueChangeType: 1
+      EventEffectChangeValue1: 0
+      EventEffectChangeValue2: 1
+    SkillChangeType: 2
+    SkillCountChangeType: 0
+    SkillName: Attack
+    SkillNameList: []
+    SkillValueType: 0
+    SkillValue:
+      LockState: 0
+      Name: Attack
+      Property: 0
+      MaxProperty: 0
+      AttackRange: 1.5
+      SkillEffectRange: 0
+      OriginAttack: 5
+      ChooseType: 1
+      Shape: 0
+      MaxUnitsChoose: 0
+      ValueChangeType: 0
+    EnemyCreateDataList:
+    - Name: Eyeball
+      Count: 3
+    - Name: Boss
+      Count: 1
+    ButtonList:
+    - Text: Great!
+      ButtonCondition: 1
+      ButtonConditionValueType: 0
+      ButtonConditionValueFilter: 0
+      ButtonConditionArg1: 0
+      ButtonConditionArg2: 0
+      ButtonEvent:
+        m_PersistentCalls:
+          m_Calls: []
+    - Text: Is this really a good thing?
+      ButtonCondition: 1
+      ButtonConditionValueType: 0
+      ButtonConditionValueFilter: 0
+      ButtonConditionArg1: 0
+      ButtonConditionArg2: 0
+      ButtonEvent:
+        m_PersistentCalls:
+          m_Calls: []
+  - ID: 2
+    Name: Direct threat
+    Description:
+    - An enemy is coming.
+    - Be prepared
+    RoomEventTriggerFoldout: 1
+    RoomEventTrigger:
+      RoomEventEffectTrigger: 0
+      RoomEventEffectTriggerArg: 0
+      EventTriggerPre: 0
+      EventTriggerPreArg1: 0
+      EventTriggerPreArg2: 0
+      EventTriggerPreArg3: 0
+      EventTriggerPreArg4: 0
+    EventEffectFoldout: 1
+    RoomEventEffect:
+      HasEventEffect: 1
+      EventTarget: 0
+      EventTargetFilter: 0
+      EventTargetCheckValueType: 0
+      EventTargetCheckValueFilter: 0
+      EventTargetFilterArg1: 0
+      EventTargetFilterArg2: 0
+      EventTargetFilterArg3: 0
+      EventEffectWithTarget: 0
+      EventEffectWithoutTarget: 2
+      EventEffectChangeValueType: 0
+      EventEffectChangeValueChangeType: 0
+      EventEffectChangeValue1: 0
+      EventEffectChangeValue2: 0
+    SkillChangeType: 0
+    SkillCountChangeType: 0
+    SkillName: 
+    SkillNameList: []
+    SkillValueType: 0
+    SkillValue:
+      LockState: 0
+      Name: 
+      Property: 0
+      MaxProperty: 0
+      AttackRange: 0
+      SkillEffectRange: 0
+      OriginAttack: 0
+      ChooseType: 0
+      Shape: 0
+      MaxUnitsChoose: 0
+      ValueChangeType: 0
+    EnemyCreateDataList:
+    - Name: Eyeball
+      Count: 3
+    ButtonList:
+    - Text: Prepare for battle
+      ButtonCondition: 0
+      ButtonConditionValueType: 0
+      ButtonConditionValueFilter: 0
+      ButtonConditionArg1: 0
+      ButtonConditionArg2: 0
+      ButtonEvent:
+        m_PersistentCalls:
+          m_Calls: []
+  - ID: 4
+    Name: Something hot!
+    Description:
+    - A flame appears in front of you
+    - it flies directly into your chest and disappears
+    - You don't feel anything unusual
+    - 'Oh! '
+    - Except your hands are on fire right now.
+    - 
+    - (You have gained the <color=#87CEEB>Fireball</color> skill)
+    RoomEventTriggerFoldout: 1
+    RoomEventTrigger:
+      RoomEventEffectTrigger: 0
+      RoomEventEffectTriggerArg: 0
+      EventTriggerPre: 0
+      EventTriggerPreArg1: 0
+      EventTriggerPreArg2: 0
+      EventTriggerPreArg3: 0
+      EventTriggerPreArg4: 0
+    EventEffectFoldout: 1
+    RoomEventEffect:
+      HasEventEffect: 1
+      EventTarget: 1
+      EventTargetFilter: 0
+      EventTargetCheckValueType: 0
+      EventTargetCheckValueFilter: 0
+      EventTargetFilterArg1: 0
+      EventTargetFilterArg2: 0
+      EventTargetFilterArg3: 0
+      EventEffectWithTarget: 2
+      EventEffectWithoutTarget: 0
+      EventEffectChangeValueType: 2
+      EventEffectChangeValueChangeType: 0
+      EventEffectChangeValue1: 0
+      EventEffectChangeValue2: 0
+    SkillChangeType: 0
+    SkillCountChangeType: 0
+    SkillName: 
+    SkillNameList:
+    - fireball
+    SkillValueType: 0
+    SkillValue:
+      LockState: 0
+      Name: 
+      Property: 0
+      MaxProperty: 0
+      AttackRange: 0
+      SkillEffectRange: 0
+      OriginAttack: 0
+      ChooseType: 0
+      Shape: 0
+      MaxUnitsChoose: 0
+      ValueChangeType: 0
+    EnemyCreateDataList: []
+    ButtonList:
+    - Text: This looks so cool.
+      ButtonCondition: 0
+      ButtonConditionValueType: 0
+      ButtonConditionValueFilter: 0
+      ButtonConditionArg1: 0
+      ButtonConditionArg2: 0
+      ButtonEvent:
+        m_PersistentCalls:
+          m_Calls: []
+    - Text: I need firefighters.
+      ButtonCondition: 0
+      ButtonConditionValueType: 0
+      ButtonConditionValueFilter: 0
+      ButtonConditionArg1: 0
+      ButtonConditionArg2: 0
+      ButtonEvent:
+        m_PersistentCalls:
+          m_Calls: []
+  - ID: 1
+    Name: It's always coming
+    Description:
+    - You feel it approaching
+    - That sense of inescapable fear
+    - is clinging to your spine
+    - Now
+    - It's time to face your fears head on
+    - Even if it means the end
+    - <color=red>Boss</color>  Already generated
+    RoomEventTriggerFoldout: 1
+    RoomEventTrigger:
+      RoomEventEffectTrigger: 0
+      RoomEventEffectTriggerArg: 0
+      EventTriggerPre: 5
+      EventTriggerPreArg1: 0
+      EventTriggerPreArg2: 0
+      EventTriggerPreArg3: 3
+      EventTriggerPreArg4: 3
+    EventEffectFoldout: 1
+    RoomEventEffect:
+      HasEventEffect: 1
+      EventTarget: 0
+      EventTargetFilter: 0
+      EventTargetCheckValueType: 0
+      EventTargetCheckValueFilter: 0
+      EventTargetFilterArg1: 0
+      EventTargetFilterArg2: 0
+      EventTargetFilterArg3: 0
+      EventEffectWithTarget: 0
+      EventEffectWithoutTarget: 2
+      EventEffectChangeValueType: 0
+      EventEffectChangeValueChangeType: 0
+      EventEffectChangeValue1: 0
+      EventEffectChangeValue2: 0
+    SkillChangeType: 0
+    SkillCountChangeType: 0
+    SkillName: 
+    SkillNameList: []
+    SkillValueType: 0
+    SkillValue:
+      LockState: 0
+      Name: 
+      Property: 0
+      MaxProperty: 0
+      AttackRange: 0
+      SkillEffectRange: 0
+      OriginAttack: 0
+      ChooseType: 0
+      Shape: 0
+      MaxUnitsChoose: 0
+      ValueChangeType: 0
+    EnemyCreateDataList:
+    - Name: Boss
+      Count: 1
+    ButtonList:
+    - Text: Face it!
+      ButtonCondition: 0
+      ButtonConditionValueType: 0
+      ButtonConditionValueFilter: 0
+      ButtonConditionArg1: 0
+      ButtonConditionArg2: 0
+      ButtonEvent:
+        m_PersistentCalls:
+          m_Calls: []
+    - Text: Face it!
+      ButtonCondition: 0
+      ButtonConditionValueType: 0
+      ButtonConditionValueFilter: 0
+      ButtonConditionArg1: 0
+      ButtonConditionArg2: 0
+      ButtonEvent:
+        m_PersistentCalls:
+          m_Calls: []
+    - Text: Face it!
+      ButtonCondition: 0
+      ButtonConditionValueType: 0
+      ButtonConditionValueFilter: 0
+      ButtonConditionArg1: 0
+      ButtonConditionArg2: 0
+      ButtonEvent:
+        m_PersistentCalls:
+          m_Calls: []
+  - ID: 3
+    Name: Rolling smoke
+    Description:
+    - It's on fire!
+    - The temperature is rising all around
+    - You feel the smoke
+    - being inhaled into your nasal passages
+    - Suddenly everything disappears
+    - is this just an illusion?
+    - Or is it really?
+    - The smell of smoke you can still smell
+    - (You get the <color=#87CEEB>smoke</color> skill)
+    RoomEventTriggerFoldout: 1
+    RoomEventTrigger:
+      RoomEventEffectTrigger: 0
+      RoomEventEffectTriggerArg: 0
+      EventTriggerPre: 0
+      EventTriggerPreArg1: 0
+      EventTriggerPreArg2: 0
+      EventTriggerPreArg3: 0
+      EventTriggerPreArg4: 0
+    EventEffectFoldout: 1
+    RoomEventEffect:
+      HasEventEffect: 1
+      EventTarget: 1
+      EventTargetFilter: 0
+      EventTargetCheckValueType: 0
+      EventTargetCheckValueFilter: 0
+      EventTargetFilterArg1: 0
+      EventTargetFilterArg2: 0
+      EventTargetFilterArg3: 0
+      EventEffectWithTarget: 2
+      EventEffectWithoutTarget: 0
+      EventEffectChangeValueType: 0
+      EventEffectChangeValueChangeType: 0
+      EventEffectChangeValue1: 0
+      EventEffectChangeValue2: 0
+    SkillChangeType: 0
+    SkillCountChangeType: 0
+    SkillName: 
+    SkillNameList:
+    - Smoke
+    SkillValueType: 0
+    SkillValue:
+      LockState: 0
+      Name: 
+      Property: 0
+      MaxProperty: 0
+      AttackRange: 0
+      SkillEffectRange: 0
+      OriginAttack: 0
+      ChooseType: 0
+      Shape: 0
+      MaxUnitsChoose: 0
+      ValueChangeType: 0
+    EnemyCreateDataList: []
+    ButtonList:
+    - Text: It's too real.
+      ButtonCondition: 0
+      ButtonConditionValueType: 0
+      ButtonConditionValueFilter: 0
+      ButtonConditionArg1: 0
+      ButtonConditionArg2: 0
+      ButtonEvent:
+        m_PersistentCalls:
+          m_Calls: []
+  - ID: 5
+    Name: The Endless Room
+    Description:
+    - Room after room
+    - door after door
+    - 'You are trapped in this prison '
+    - that made up of rooms
+    - But look on the bright side
+    - your body is getting stronger
+    - (Your walking <color=#87CEEB>speed</color> has been increased)
+    RoomEventTriggerFoldout: 1
+    RoomEventTrigger:
+      RoomEventEffectTrigger: 0
+      RoomEventEffectTriggerArg: 0
+      EventTriggerPre: 4
+      EventTriggerPreArg1: 0
+      EventTriggerPreArg2: 0
+      EventTriggerPreArg3: 3
+      EventTriggerPreArg4: 6
+    EventEffectFoldout: 1
+    RoomEventEffect:
+      HasEventEffect: 1
+      EventTarget: 1
+      EventTargetFilter: 0
+      EventTargetCheckValueType: 0
+      EventTargetCheckValueFilter: 0
+      EventTargetFilterArg1: 0
+      EventTargetFilterArg2: 0
+      EventTargetFilterArg3: 0
+      EventEffectWithTarget: 0
+      EventEffectWithoutTarget: 0
+      EventEffectChangeValueType: 4
+      EventEffectChangeValueChangeType: 1
+      EventEffectChangeValue1: 10
+      EventEffectChangeValue2: 0
+    SkillChangeType: 0
+    SkillCountChangeType: 0
+    SkillName: 
+    SkillNameList: []
+    SkillValueType: 0
+    SkillValue:
+      LockState: 0
+      Name: 
+      Property: 0
+      MaxProperty: 0
+      AttackRange: 0
+      SkillEffectRange: 0
+      OriginAttack: 0
+      ChooseType: 0
+      Shape: 0
+      MaxUnitsChoose: 0
+      ValueChangeType: 0
+    EnemyCreateDataList: []
+    ButtonList:
+    - Text: At least there is a good side
+      ButtonCondition: 0
+      ButtonConditionValueType: 0
+      ButtonConditionValueFilter: 0
+      ButtonConditionArg1: 0
+      ButtonConditionArg2: 0
+      ButtonEvent:
+        m_PersistentCalls:
+          m_Calls: []
+    - Text: Not much use
+      ButtonCondition: 0
+      ButtonConditionValueType: 0
+      ButtonConditionValueFilter: 0
+      ButtonConditionArg1: 0
+      ButtonConditionArg2: 0
+      ButtonEvent:
+        m_PersistentCalls:
+          m_Calls: []
+  - ID: 6
+    Name: Life Thief
+    Description:
+    - There is a force
+    - ' in the room in front of you'
+    - You feel a force
+    - pulling your strength away from your body
+    - You become weak and frail
+    - Loss of 15 <color=red>HP</color> points
+    RoomEventTriggerFoldout: 0
+    RoomEventTrigger:
+      RoomEventEffectTrigger: 0
+      RoomEventEffectTriggerArg: 0
+      EventTriggerPre: 0
+      EventTriggerPreArg1: 0
+      EventTriggerPreArg2: 0
+      EventTriggerPreArg3: 0
+      EventTriggerPreArg4: 0
+    EventEffectFoldout: 1
+    RoomEventEffect:
+      HasEventEffect: 1
+      EventTarget: 1
+      EventTargetFilter: 0
+      EventTargetCheckValueType: 0
+      EventTargetCheckValueFilter: 0
+      EventTargetFilterArg1: 0
+      EventTargetFilterArg2: 0
+      EventTargetFilterArg3: 0
+      EventEffectWithTarget: 0
+      EventEffectWithoutTarget: 0
+      EventEffectChangeValueType: 0
+      EventEffectChangeValueChangeType: 3
+      EventEffectChangeValue1: 15
+      EventEffectChangeValue2: 0
+    SkillChangeType: 0
+    SkillCountChangeType: 0
+    SkillName: 
+    SkillNameList: []
+    SkillValueType: 0
+    SkillValue:
+      LockState: 0
+      Name: 
+      Property: 0
+      MaxProperty: 0
+      AttackRange: 0
+      SkillEffectRange: 0
+      OriginAttack: 0
+      ChooseType: 0
+      Shape: 0
+      MaxUnitsChoose: 0
+      ValueChangeType: 0
+    EnemyCreateDataList: []
+    ButtonList:
+    - Text: An Unfortunate Beginning
+      ButtonCondition: 0
+      ButtonConditionValueType: 0
+      ButtonConditionValueFilter: 0
+      ButtonConditionArg1: 0
+      ButtonConditionArg2: 0
+      ButtonEvent:
+        m_PersistentCalls:
+          m_Calls: []
